@@ -9,7 +9,7 @@ class Activities:
     def __str__(self):
         return self.activity
 
-    def subtract_income(self, income):
+    def salaryAfterActivity(self, income):
         return income - self.amount 
 
     
