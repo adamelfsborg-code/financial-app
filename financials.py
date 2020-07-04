@@ -22,10 +22,8 @@ class Food(Activities):
 
     def food_list_items(self, **kwargs):
         for key, value in kwargs.items():
-            # print("{0} : {1}".format(key, value))
             self.cart_item.append(key)
             self.cart_price.append(value)
-            return f"{0} : {1}".format(key, value)
 
     def item_cart(self):
         return self.cart_item
@@ -48,7 +46,7 @@ class Bills(Activities):
         for key, value in kwargs.items():
             self.bill_name.append(key)
             self.bill_price.append(value)
-
+            return key + value
     def name_bill(self):
         return self.bill_name
     
@@ -56,27 +54,19 @@ class Bills(Activities):
         return self.price_bill
 
     def salaryAfterBills(self, income):
-        return income - sum(self.bill_price)
+        return income - self.amount
 
 class Saveings(Activities):
     def __init__(self, activity, amount):
         super().__init__(activity, amount)
 
-    def saveing_time(self, income, salary):
-        return (self.amount / income) + salary
+    def saveing_time(self,income):
+        return (self.amount / income ) 
 
-    def saveing_amount(self, salary):
-        return self.amount - salary
-# a = Activities('football', 500)
-
-# print(a.salaryAfterActivity(1000))
-
-
-# f = Food('tomato', 20)
+    def saveing_amount(self, monney_in_bank):
+        if self.amount < monney_in_bank:
+            return f'you dont need to save any?: '
+        else:
+            return self.amount - monney_in_bank
 
 
-# print(f.salaryAfterFood(20000))
-# print(f.item_cart(), f.price_cart())
-
-# s = Saveings('bahamas', 50000)
-# print(s.saveing_amount(34999))

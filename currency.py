@@ -3,6 +3,8 @@ class Currency:
         self.currency = currency
 
     def __str__(self):
-        return self.currency
-
+        if self.currency.isalpha() == False and self.currency.isdigit() == False:
+            return self.currency
+        else:
+            return '$'
     
